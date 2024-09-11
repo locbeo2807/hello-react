@@ -10,11 +10,10 @@ export default function Homepage() {
     const { addToCart } = useContext(CartContext);
     const navigate = useNavigate(); 
     const [products, setProducts] = useState([]);
-    const [visibleProducts, setVisibleProducts] = useState(8); // Initially show 8 products
+    const [visibleProducts, setVisibleProducts] = useState(8); 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Fetch products from the API
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -38,9 +37,8 @@ export default function Homepage() {
         navigate('/cua-hang'); 
     };
 
-    // Function to handle showing more products
     const handleShowMore = () => {
-        setVisibleProducts(products.length); // Show all products when button is clicked
+        setVisibleProducts(products.length); 
     };
 
     if (loading) return <div>Loading...</div>;
@@ -56,7 +54,7 @@ export default function Homepage() {
                          alt="New Collection" 
                          loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-black opacity-10"></div> {/* Giảm opacity để hình ảnh sáng hơn */}
+                    <div className="absolute inset-0 bg-black opacity-10"></div> 
                     <div className="relative z-10 flex items-center justify-end h-full px-8">
                         <div className="bg-white p-8 rounded-md shadow-md max-w-md">
                             <h2 className="text-sm font-light text-gray-500">New Arrival</h2>

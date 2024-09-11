@@ -2,14 +2,14 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './ComparisonPage.css';
-import FeatureSection from '../components/FeatureSection'; // Import FeatureSection
-import Footer from '../components/Footer'; // Import Footer
+import FeatureSection from '../components/FeatureSection'; 
+import Footer from '../components/Footer'; 
 
 const ComparisonPage = () => {
     const location = useLocation();
     const { productId } = location.state || {};
 
-    // Logic to fetch and compare products based on the passed productId
+    
 
     return (
         <div className="comparison-page">
@@ -49,14 +49,11 @@ const ComparisonPage = () => {
                         <div>1 Sectional Sofa</div>
                         <div>1 Three Seater, 2 Single Seater</div>
                     </div>
-                    {/* Add more comparison rows as needed */}
                 </div>
             </div>
 
-            {/* Feature Section Above Footer */}
             <FeatureSection />
 
-            {/* Footer */}
             <Footer />
         </div>
     );

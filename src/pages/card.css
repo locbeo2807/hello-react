@@ -169,14 +169,13 @@
     background-color: orange;
 }
 
-/* Khi hover vào hình ảnh */
 .relative img:hover {
-    transform: scale(1.05); /* Phóng to hình ảnh lên 5% */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Tăng bóng đổ để tạo hiệu ứng nổi */
+    transform: scale(1.05); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 .img-1 {
     width: 100%;
-    height: 200px; /* Chiều cao cố định để đảm bảo tất cả các hình có cùng tỷ lệ */
+    height: 200px; 
     overflow: hidden;
     border-radius: 8px;
 }

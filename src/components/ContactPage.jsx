@@ -30,15 +30,15 @@ const Contact = () => {
                     <img
                         src="https://s3-alpha-sig.figma.com/img/1461/f3d6/ff74c027a1888544144abe4be6e02cbf?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YLt64fXtuzoOrK200L5f07UlrXncZVkzFiAyshUAvmiN3kSlBYDbGpssV~-Fv4H-EV~ZGdfy55UZgz1IkGrBNsZxpAPlQK2GAKtsh4zoX~wwyIqiFFAU2UEDIdJ5nbZ47QaIatQj5lMt0JHBJ4EPhUjFxlrJ2-DsizyQegnnvFKZyh5grgy5FWuYMArXw7SmMKt-U~~TuuYYXaRVnjW~QT5reUwQw8KkSY2tgdhFDI~3Sj2l9GfAYc2cuVVXXvbdzDri1Ix6tLlxyNiYP0cB1GnReY0kNke6sORtaRAbI-bV6MMt9G8xmFRrP99uTfYacEVfwAG0OA0Ujeb7E~YZvQ__"
                         alt="Background"
-                        className="w-full h-full object-cover filter blur-sm" // Điều chỉnh mức độ mờ ít hơn với blur-sm
+                        className="w-full h-full object-cover filter blur-sm" 
                     />
-                    <div className="absolute inset-0 bg-black opacity-30"></div> {/* Overlay để làm tối hình ảnh */}
+                    <div className="absolute inset-0 bg-black opacity-30"></div> 
                 </div>
                 <div className="relative z-10 text-center text-black">
                     <h1 className="text-4xl font-bold">Contact</h1>
                     <nav className="mt-2">
                         <Link to="/" className="hover:underline font-bold">Home</Link>
-                        <span className="mx-2">&gt;</span> {/* Replaced '/' with '>' */}
+                        <span className="mx-2">&gt;</span> 
                         <span>Contact</span>
                     </nav>
 
@@ -78,7 +78,7 @@ const Contact = () => {
     );
 };
 
-// Component để hiển thị thông tin liên hệ
+
 const ContactInfo = ({ icon, title, details }) => (
     <div className="flex items-start">
         <div className="mr-4 text-yellow-700 text-2xl">{icon}</div>
@@ -89,7 +89,7 @@ const ContactInfo = ({ icon, title, details }) => (
     </div>
 );
 
-// Component cho các trường nhập liệu
+
 const InputField = ({ label, name, value, handleChange, required = false, placeholder = '' }) => (
     <div>
         <label htmlFor={name} className="block text-sm font-medium text-gray-700">{label}</label>
@@ -106,7 +106,7 @@ const InputField = ({ label, name, value, handleChange, required = false, placeh
     </div>
 );
 
-// Component cho trường textarea
+
 const TextAreaField = ({ label, name, value, handleChange, required = false, placeholder = '' }) => (
     <div>
         <label htmlFor={name} className="block text-sm font-medium text-gray-700">{label}</label>

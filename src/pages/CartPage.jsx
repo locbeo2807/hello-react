@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import './CartPage.css';
-import FeatureSection from '../components/FeatureSection'; // Import FeatureSection
+import FeatureSection from '../components/FeatureSection'; 
 
 const CartPage = () => {
     const { cartItems, getCartTotal, removeFromCart, updateCartQuantity } = useContext(CartContext);
-    const navigate = useNavigate(); // Use navigate hook
+    const navigate = useNavigate(); 
 
     const handleCheckout = () => {
-        navigate('/checkout'); // Navigate to the checkout page
+        navigate('/checkout'); 
     };
 
     return (
@@ -79,7 +79,6 @@ const CartPage = () => {
                     </div>
                 </div>
 
-                {/* Feature Section Above Footer */}
             </div>
             <FeatureSection />
         </>

@@ -8,7 +8,7 @@ import CartPage from './pages/CartPage';
 import Register from './components/Register';
 import Login from './components/Login';
 import ProductDetail from './components/ProductDetail';
-import CheckoutPage from './pages/CheckoutPage'; // Nhập CheckoutPage
+import CheckoutPage from './pages/CheckoutPage';
 import { CartProvider } from './context/CartContext';
 import ContactPage from './components/ContactPage';
 import ComparisonPage from './pages/ComparisonPage';
@@ -25,7 +25,7 @@ function App() {
                     <Route path="/dang-nhap" element={<Login />} />
                     <Route path="/product/:id" element={<ProductDetail />} />
                     <Route path="/cart" element={<CartPage />} />
-                    <Route path="/checkout" element={<CheckoutPage />} /> {/* Thêm tuyến đường cho trang thanh toán */}
+                    <Route path="/checkout" element={<CheckoutPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/comparison" element={<ComparisonPage />} />
                     <Route path='/blog' element={<Blog/>}/>

@@ -3,24 +3,24 @@ import FeatureSection from '../components/FeatureSection';
 import ProductCard from '../components/ProductCard';
 
 export default function Shop() {
-    const [originalListData, setOriginalListData] = useState([]); // Store original data
+    const [originalListData, setOriginalListData] = useState([]); 
     const [listData, setListData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(4); // Default to 4 items per page
+    const [itemsPerPage, setItemsPerPage] = useState(4); 
     const [totalItems, setTotalItems] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [sortOption, setSortOption] = useState('default');
 
-    // Filter states
+    
     const [brand, setBrand] = useState('');
-    const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 }); // Updated state to handle min and max values
+    const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 }); 
 
-    // State to store brand and category data
+    
     const [brands, setBrands] = useState([]);
-    const [categories, setCategories] = useState([]); // New state for categories
+    const [categories, setCategories] = useState([]); 
 
-    // Fetch the data from the API
+    
     const getListData = useCallback(async () => {
         try {
             setLoading(true);
@@ -29,8 +29,8 @@ export default function Shop() {
                 throw new Error('Network response was not ok');
             }
             const data = await res.json();
-            setOriginalListData(data.data.products); // Save original data
-            setTotalItems(data.data.products.length); // Update total items based on fetched data
+            setOriginalListData(data.data.products); 
+            setTotalItems(data.data.products.length); 
         } catch (err) {
             console.error(err);
             setError(err.message);
@@ -39,7 +39,7 @@ export default function Shop() {
         }
     }, []);
 
-    // Fetch the brand data from the API
+
     const getBrandsData = useCallback(async () => {
         try {
             const res = await fetch('https://learning.sonthanh.net.vn/api/brands');
@@ -47,13 +47,13 @@ export default function Shop() {
                 throw new Error('Failed to fetch brand data');
             }
             const data = await res.json();
-            setBrands(data.data); // Save the brands data
+            setBrands(data.data); 
         } catch (err) {
             console.error('Error fetching brands:', err);
         }
     }, []);
 
-    // Fetch product categories from the API
+    
     const getCategoriesData = useCallback(async () => {
         try {
             const res = await fetch('https://learning.sonthanh.net.vn/api/product-categories');
@@ -61,13 +61,13 @@ export default function Shop() {
                 throw new Error('Failed to fetch category data');
             }
             const data = await res.json();
-            setCategories(data.data); // Save the categories data
+            setCategories(data.data); 
         } catch (err) {
             console.error('Error fetching categories:', err);
         }
     }, []);
 
-    // Apply filters to the fetched data
+    
     const applyFilters = useCallback(() => {
         let filteredData = originalListData;
 
@@ -81,23 +81,23 @@ export default function Shop() {
             );
         }
 
-        // Calculate start and end indices for slicing
+        
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
 
-        // Slice filtered data based on current page and items per page
+        
         setListData(filteredData.slice(startIndex, endIndex));
-        setTotalItems(filteredData.length); // Update total items based on filtered data
+        setTotalItems(filteredData.length); 
     }, [brand, priceRange, originalListData, currentPage, itemsPerPage]);
 
-    // Fetch data on component mount
+    
     useEffect(() => {
         getListData();
         getBrandsData();
-        getCategoriesData(); // Fetch categories data
+        getCategoriesData(); 
     }, [getListData, getBrandsData, getCategoriesData]);
 
-    // Apply filters when filter criteria or pagination changes
+    
     useEffect(() => {
         applyFilters();
     }, [applyFilters, currentPage, itemsPerPage]);
@@ -105,7 +105,7 @@ export default function Shop() {
     const handleItemsPerPageChange = (event) => {
         const newItemsPerPage = parseInt(event.target.value, 10);
         setItemsPerPage(newItemsPerPage > 0 ? newItemsPerPage : 4);
-        setCurrentPage(1); // Reset to first page
+        setCurrentPage(1);
     };
 
     const handlePageChange = (newPage) => {
@@ -136,7 +136,7 @@ export default function Shop() {
                     <h1 className="text-4xl font-black text-gray-900 dark:text-white">Shop</h1>
                     <nav className="text-gray-200 mt-2">
                         <a href="/" className="text-black font-bold">Home</a>
-                        <span className="text-black mx-2">&gt;</span> {/* Black > symbol */}
+                        <span className="text-black mx-2">&gt;</span> 
                         <span className="text-black font-light">Shop</span>
                     </nav>
 

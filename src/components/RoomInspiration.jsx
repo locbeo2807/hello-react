@@ -2,16 +2,16 @@ import React from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './RoomInspiration.css'; // Tạo file CSS riêng để dễ quản lý
+import './RoomInspiration.css'; 
 
 const RoomInspiration = () => {
     const settings = {
-        dots: true, // Hiển thị các chấm điều hướng
+        dots: true, 
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: true, // Hiển thị các mũi tên điều hướng
+        arrows: true, 
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
     };
@@ -19,7 +19,6 @@ const RoomInspiration = () => {
     return (
         <div className="bg-[#f8f5f2] py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Bên trái - Văn bản */}
                 <div className="flex flex-col justify-center">
                     <h2 className="text-4xl font-bold text-gray-800">50+ Beautiful rooms inspiration</h2>
                     <p className="mt-4 text-gray-600">
@@ -32,7 +31,6 @@ const RoomInspiration = () => {
                     </div>
                 </div>
 
-                {/* Bên phải - Carousel */}
                 <div className="relative flex items-center">
                     <Slider {...settings} className="room-inspiration-carousel w-full h-full overflow-hidden rounded-lg shadow-lg">
                         <div className="relative">
@@ -62,7 +60,6 @@ const RoomInspiration = () => {
     );
 };
 
-// Nút Next Arrow
 const SampleNextArrow = (props) => {
     const { className, style, onClick } = props;
     return (

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import './CartDropdown.css'; // Import the CSS file
+import './CartDropdown.css'; 
 
 const CartDropdown = () => {
     const { cartItems, removeFromCart } = useContext(CartContext);
 
-    // Calculate total price
+    
     const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
     return (

@@ -27,7 +27,7 @@ const ProductDetail = () => {
             try {
                 const res = await fetch(`https://learning.sonthanh.net.vn/api/products?page=1`);
                 const data = await res.json();
-                setRelatedProducts(data.data.products.slice(0, 4)); // Limit to 4 related products
+                setRelatedProducts(data.data.products.slice(0, 4)); 
             } catch (err) {
                 console.error(err);
             }
