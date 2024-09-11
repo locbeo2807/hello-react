@@ -1,0 +1,9 @@
+.room-inspiration-carousel .carousel-image {
+    width: 100%;
+    height: 400px; /* Đặt chiều cao phù hợp */
+}
+
+.slick-prev:before, 
+.slick-next:before {
+    color: black; /* Màu của các mũi tên */
+}
