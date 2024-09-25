@@ -50,7 +50,7 @@ export default function Homepage() {
             <div className="relative bg-white overflow-hidden">
                 <div className="relative h-screen">
                     <img className="absolute inset-0 w-full h-full object-cover" 
-                         src="https://s3-alpha-sig.figma.com/img/98fb/219f/a11f805aade2224f1d6658764a2395df?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aJHR1hSFbPjMK-RUP~wxkppuhD1GK1TML-UUL8jviqRJa9C-FM79zi0VKvlZUGcE0zhIDNZcVwXxMogx-yVp47GMHWZdPkhDPWFYOYlKS6sQafjwTNboyH2i2YCyumgX1znxDOna82ZMcEmWaLnBBZjvbeWWimFFvOfrgGwrTCiCmoe~eor0y5myAdnQsl9I8FEPdo0RfvgV2HdJGKaOOaoHUdlbiynavgPoGjHgegGzuRPcNOpT7loaoB-IV-jHizvlpTURzAfQQIgYPxqCqD~X1P2bgxlymlKf-5LwYzj6qAKYFOdki6v~lY553ndjwY-fzeWwhS2bK-oOPHyt2w__" 
+                         src="https://img.freepik.com/premium-photo/scandinavian-interior-mockup-wall-decal-background_1961-259.jpg?w=996" 
                          alt="New Collection" 
                          loading="lazy"
                     />

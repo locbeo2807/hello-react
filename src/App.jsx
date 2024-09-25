@@ -13,6 +13,7 @@ import { CartProvider } from './context/CartContext';
 import ContactPage from './components/ContactPage';
 import ComparisonPage from './pages/ComparisonPage';
 import Blog from './pages/Blog';
+import CheckOrderPage from './pages/CheckOrderPage';
 function App() {
     return (
         <CartProvider>
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/comparison" element={<ComparisonPage />} />
                     <Route path='/blog' element={<Blog/>}/>
+                    <Route path="/check-order" element={<CheckOrderPage />} />
                 </Routes>
                 <Footer />
             </div>
