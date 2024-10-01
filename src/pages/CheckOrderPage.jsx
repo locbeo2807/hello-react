@@ -78,6 +78,7 @@ export default function CheckOrderPage() {
                         orderData.data.orders.map(order => (
                             <div key={order.id} className="border-t border-gray-200 py-2">
                                 <p><strong>ID đơn hàng:</strong> {order.id}</p>
+                                <p><strong>Tên người đặt:</strong> {order.name}</p>
                                 <p><strong>Địa chỉ giao hàng:</strong> {order.address}</p>
                                 <p><strong>Thời gian đặt hàng:</strong> {formatDate(order.created_at)}</p> {/* Sử dụng hàm formatDate */}
                                 {order.products.map((product) => (
