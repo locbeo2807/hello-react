@@ -11,16 +11,13 @@ export default function Shop() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [sortOption, setSortOption] = useState('default');
-
     
     const [brand, setBrand] = useState('');
     const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 }); 
-
-    
     const [brands, setBrands] = useState([]);
     const [categories, setCategories] = useState([]); 
+    const [selectedCategory, setSelectedCategory] = useState('');
 
-    
     const getListData = useCallback(async () => {
         try {
             setLoading(true);
@@ -39,7 +36,6 @@ export default function Shop() {
         }
     }, []);
 
-
     const getBrandsData = useCallback(async () => {
         try {
             const res = await fetch('https://learning.sonthanh.net.vn/api/brands');
@@ -53,7 +49,6 @@ export default function Shop() {
         }
     }, []);
 
-    
     const getCategoriesData = useCallback(async () => {
         try {
             const res = await fetch('https://learning.sonthanh.net.vn/api/product-categories');
@@ -67,7 +62,6 @@ export default function Shop() {
         }
     }, []);
 
-    
     const applyFilters = useCallback(() => {
         let filteredData = originalListData;
 
@@ -81,26 +75,34 @@ export default function Shop() {
             );
         }
 
-        
+        if (selectedCategory) {
+            filteredData = filteredData.filter(product => product.category_id === parseInt(selectedCategory, 10));
+        }
+
+        if (sortOption === 'priceAsc') {
+            filteredData = filteredData.sort((a, b) => a.price - b.price);
+        } else if (sortOption === 'priceDesc') {
+            filteredData = filteredData.sort((a, b) => b.price - a.price);
+        } else if (sortOption === 'newest') {
+            filteredData = filteredData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        }
+
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
 
-        
         setListData(filteredData.slice(startIndex, endIndex));
         setTotalItems(filteredData.length); 
-    }, [brand, priceRange, originalListData, currentPage, itemsPerPage]);
+    }, [brand, priceRange, selectedCategory, sortOption, originalListData, currentPage, itemsPerPage]);
 
-    
     useEffect(() => {
         getListData();
         getBrandsData();
         getCategoriesData(); 
     }, [getListData, getBrandsData, getCategoriesData]);
 
-    
     useEffect(() => {
         applyFilters();
-    }, [applyFilters, currentPage, itemsPerPage]);
+    }, [applyFilters, currentPage, itemsPerPage, selectedCategory, sortOption]);
 
     const handleItemsPerPageChange = (event) => {
         const newItemsPerPage = parseInt(event.target.value, 10);
@@ -125,11 +127,10 @@ export default function Shop() {
 
     return (
         <div className="relative min-h-screen bg-gray-100">
-            {/* Background Image with Overlay */}
             <div className="relative z-0">
                 <img
-                    src="https://www.furniro.shop/_next/image?url=%2Fsmall-hero-teaser.png&w=1920&q=75"
-                    alt="Background"
+                    src="/img/hinh.jpg"
+                    alt="hinh"
                     className="w-full h-56 object-cover blur-sm"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
@@ -139,21 +140,17 @@ export default function Shop() {
                         <span className="text-black mx-2">&gt;</span> 
                         <span className="text-black font-light">Shop</span>
                     </nav>
-
                 </div>
             </div>
 
-            {/* Compact Toolbar */}
             <div className="relative z-10 p-2 mb-5">
                 <div className="bg-orange-200 p-2 border border-gray-300 rounded-lg shadow-md flex flex-wrap items-center justify-between space-x-2">
-                    {/* Filter Buttons */}
                     <div className="flex space-x-1 items-center">
                         <button className="text-gray-600 text-sm px-2 py-1 hover:text-gray-800 transition">Filter</button>
                         <button className="text-gray-600 text-sm px-2 py-1 hover:text-gray-800 transition">Grid</button>
                         <button className="text-gray-600 text-sm px-2 py-1 hover:text-gray-800 transition">List</button>
                     </div>
 
-                    {/* Display Count */}
                     <div className="text-gray-500 text-xs flex-grow text-center">
                         {loading ? (
                             <span>Loading...</span>
@@ -162,9 +159,7 @@ export default function Shop() {
                         )}
                     </div>
 
-                    {/* Filter Controls */}
                     <div className="flex items-center space-x-1">
-                        {/* Brand Filter */}
                         <label className="text-xs">Brand</label>
                         <select
                             value={brand}
@@ -179,7 +174,20 @@ export default function Shop() {
                             ))}
                         </select>
 
-                        {/* Price Range Filter with Slider */}
+                        <label className="text-xs">Category</label>
+                        <select
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            className="border border-gray-300 rounded text-xs p-1"
+                        >
+                            <option value="">All Categories</option>
+                            {categories.map((category) => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+
                         <label className="text-xs">Price</label>
                         <div className="flex items-center space-x-1">
                             <input
@@ -202,7 +210,6 @@ export default function Shop() {
                             <span className="text-xs">{priceRange.max}</span>
                         </div>
 
-                        {/* Items Per Page */}
                         <label className="text-xs">Show</label>
                         <input
                             type="number"
@@ -212,7 +219,6 @@ export default function Shop() {
                             min="1"
                         />
 
-                        {/* Sort Option */}
                         <label className="text-xs">Sort</label>
                         <select
                             value={sortOption}
@@ -228,7 +234,6 @@ export default function Shop() {
                 </div>
             </div>
 
-            {/* Product Grid */}
             <div className="mb-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {error ? (
@@ -243,7 +248,6 @@ export default function Shop() {
                 </div>
             </div>
 
-            {/* Pagination */}
             <div className="flex justify-center mt-10 mb-10 space-x-2">
                 {pageNumbers.map((page) => (
                     <button
@@ -263,7 +267,6 @@ export default function Shop() {
                 </button>
             </div>
 
-            {/* Feature Section */}
             <FeatureSection />
         </div>
     );
